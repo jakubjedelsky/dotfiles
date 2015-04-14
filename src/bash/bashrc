@@ -1,0 +1,54 @@
+# ~/.bashrc
+
+# global
+[[ -f /etc/bashrc ]] && source /etc/bashrc
+
+export LESS="FiRX"
+export EDITOR="vim"
+export LS_OPTIONS="--color=auto"
+
+# History
+export HISTCONTROL=ignorespace
+export HISTSIZE=30000
+export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
+
+# PS1 with git branch
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+export PS1="\[\e[1;34m\]\u@\h \[\e[0;32m\]\W\$(declare -F __git_ps1 &>/dev/null && __git_ps1 \" \[\e[2m\]<%s>\[\e[0m\]\") \[\e[0;32m\]$ \[\e[0m\]"
+
+# fedora development
+BODHI_USER='kubo'
+
+# -- FUNCTIONS --
+function check_yaml() {
+	FILE=$1
+	if [[ -z "$FILE" ]] ; then
+		echo "I need a file! Exiting.."
+		return 1
+	fi
+
+	ruby -e "require 'yaml'; YAML.load_file('$FILE')"
+}
+
+# i3 related stuff
+function unlock() {
+	xset -dpms
+	xset s off
+	xautolock -disable
+	notify-send "State" "Unlocked"
+}
+function lock() {
+	xset +dpms
+	xset s on
+	xautolock -enable
+	notify-send "State" "Locked"
+}
+
+# -- SOURCES --
+
+# custom aliases
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+# GoodData custom stuff
+[[ -f ~/.myconfig/gooddata.sh ]] &&	source ~/.myconfig/gooddata.sh
+
+# vim:ts=4:sw=4

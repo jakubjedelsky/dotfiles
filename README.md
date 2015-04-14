@@ -15,6 +15,11 @@ Reload (it is useful after changing configuration files):
 
 	make reload-i3
 
+## bash
+Prepare bash personal initialization files. Install with:
+
+	make install-bash
+
 ## TODO
 What I like to have there:
  - all of current dot files (vim, git, xorg, ...)
