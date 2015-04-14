@@ -1,0 +1,241 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+#font pango:DejaVu Sans Mono 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Design
+hide_edge_borders both
+for_window [class="(?i)urxvt*"] border 1pixel
+
+# Colors (solarized) ###########################################################
+
+set $base03	#002b36
+set $base02 #073642
+set $base01 #586e75
+set $base00 #657b83
+set $base0	#839496
+set $base1	#93a1a1
+set $base2	#eee8d5
+set $base3	#fdf6e3
+set $yellow #b58900
+set $orange #cb4b16
+set $red	#dc322f
+set $magenta #d33682
+set $violet #6c71c4
+set $blue	#268bd2
+set $cyan	#2aa198
+set $green	#859900
+
+# Solarized Light
+# Name                  # bord. # backg.# text
+client.focused 			$base02 $base00	$base2
+client.focused_inactive $base02 $base2	$base1
+client.unfocused		$base02 $base2	$base1
+client.urgent			$red	$red  	$base00
+client.background       $base3
+
+# End colors ##################################################################
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# move workspaces to another monitor
+bindsym	$mod+Ctrl+Up move workspace to output up
+bindsym	$mod+Ctrl+Down move workspace to output down
+
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+# split in horizontal orientation
+# original $mod+h is used above
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+focus_follows_mouse no
+
+# switch to workspace
+bindsym $mod+plus workspace number 1
+bindsym $mod+ecaron workspace number 2
+bindsym $mod+scaron workspace number 3
+bindsym $mod+ccaron workspace number 4
+bindsym $mod+rcaron workspace number 5
+bindsym $mod+zcaron workspace number 6
+bindsym $mod+yacute workspace number 7
+bindsym $mod+aacute workspace number 8
+bindsym $mod+iacute workspace number 9
+bindsym $mod+eacute workspace number 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+ecaron move container to workspace number 2
+bindsym $mod+Shift+scaron move container to workspace number 3
+bindsym $mod+Shift+ccaron move container to workspace number 4
+bindsym $mod+Shift+rcaron move container to workspace number 5
+bindsym $mod+Shift+zcaron move container to workspace number 6
+bindsym $mod+Shift+yacute move container to workspace number 7
+bindsym $mod+Shift+aacute move container to workspace number 8
+bindsym $mod+Shift+iacute move container to workspace number 9
+bindsym $mod+Shift+eacute move container to workspace number 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Lenovo specialities
+# volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id /usr/bin/pactl set-sink-volume $(pactl list short sinks | grep RUNNING | awk '{print $1}') '+5%' ; exec --no-startup-id killall -USR1 py3status
+bindsym XF86AudioLowerVolume exec --no-startup-id /usr/bin/pactl set-sink-volume $(pactl list short sinks | grep RUNNING | awk '{print $1}') '-5%' ; exec --no-startup-id killall -USR1 py3status
+bindsym XF86AudioMute exec --no-startup-id /usr/bin/pactl set-sink-mute 0 toggle ; exec --no-startup-id killall -USR1 py3status
+# brightness
+bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 10
+
+# lock it
+bindsym Control+Mod1+l exec --no-startup-id $HOME/.i3/i3exit.sh lock
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $HOME/.i3/i3exit.sh lock, mode "default"
+    bindsym e exec --no-startup-id $HOME/.i3/i3exit.sh logout, mode "default"
+    bindsym s exec --no-startup-id $HOME/.i3/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id $HOME/.i3/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id $HOME/.i3/i3exit.sh reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id $HOME/.i3/i3exit.sh shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+q mode "$mode_system"
+
+bindsym $mod+Ctrl+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
+# Start i3bar to display a workspace bar
+bar {
+    position top
+    # TODO show current keyboard layout `~/bin/xkblayout-state print "%s"`
+    status_command py3status -c ~/.i3/i3status.conf -i ~/.i3/py3modules
+    tray_output LVDS1
+	colors {
+		background	#002b36
+		statusline	$base3
+		separator	$base0
+
+		focused_workspace	$base2	$base2	#002b36
+		#active_workspace
+		inactive_workspace	#073642	#002b36	$base1
+		urgent_workspace	$red	$red	#002b36
+	}
+}
+
+set $background ~/Dropbox/elementarian_wallpapers/Californian_Hills_by_balderoine.jpg
+
+# custom execs
+exec --no-startup-id /usr/bin/syndaemon -d -t -k -i 1
+exec --no-startup-id xautolock -time 10 -locker '~/.i3/i3exit.sh lock' 
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo '50%'
+exec --no-startup-id setxkbmap -layout cz,us -variant qwerty,
+exec --no-startup-id feh --bg-scale $background
+exec --no-startup-id dropbox start
+exec --no-startup-id xset dpms 600 1200 1800
+
+# multi-monitor support
+# https://faq.i3wm.org/question/2332/flexible-monitor-setup/
+bindsym $mod+m exec --no-startup-id xrandr --output HDMI1 --off && feh --bg-scale $background
+bindsym $mod+shift+m exec --no-startup-id xrandr --output HDMI1 --auto --above LVDS1 && feh --bg-scale $background
+
+# vim: ts=4:noet
