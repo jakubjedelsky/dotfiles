@@ -20,6 +20,11 @@ Prepare bash personal initialization files. Install with:
 
 	make install-bash
 
+## xorg
+Install configuration for urxvt terminal emulator and some stuff for better using of Lenovo X1 carbon laptop (touchpad and screen).
+
+	make install-xorg
+
 ## TODO
 What I like to have there:
  - all of current dot files (vim, git, xorg, ...)
