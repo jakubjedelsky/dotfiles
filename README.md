@@ -9,7 +9,7 @@ To install all dotfiles just run:
 Improved tiling window manager. See [custom dotfile docs](src/i3/README.md) for details.
 Install:
 
-	make install-i3
+	make i3
 
 Reload (it is useful after changing configuration files):
 
@@ -18,12 +18,12 @@ Reload (it is useful after changing configuration files):
 ## bash
 Prepare bash personal initialization files. Install with:
 
-	make install-bash
+	make bash
 
 ## xorg
 Install configuration for urxvt terminal emulator and some stuff for better using of Lenovo X1 carbon laptop (touchpad and screen).
 
-	make install-xorg
+	make xorg
 
 ## TODO
 What I like to have there:
