@@ -5,7 +5,7 @@ To install all dotfiles just run:
 
 	make install
 
-## i3wm
+## I3wm
 Improved tiling window manager. See [custom dotfile docs](src/i3/README.md) for details.
 Install:
 
@@ -15,15 +15,20 @@ Reload (it is useful after changing configuration files):
 
 	make reload-i3
 
-## bash
+## Bash
 Prepare bash personal initialization files. Install with:
 
 	make bash
 
-## xorg
+## Xorg
 Install configuration for urxvt terminal emulator and some stuff for better using of Lenovo X1 carbon laptop (touchpad and screen).
 
 	make xorg
+
+## Git
+Basic gitconfig:
+
+	make git
 
 ## TODO
 What I like to have there:

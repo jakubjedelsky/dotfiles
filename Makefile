@@ -1,4 +1,4 @@
-install: i3 bash xorg
+install: i3 bash xorg git
 
 reload-i3:
 	@i3-msg 'reload'
@@ -26,3 +26,7 @@ xorg:
 	@ln -sf `pwd`/src/xorg/00-xorg-display.conf ~/.myconfig/00-xorg-display.conf
 	@echo "Xorg prepared"
 	@echo " ! Files ~/.myconfig/00-* have to be symlinked into /etc/X11/xorg.conf.d/"
+
+git:
+	@ln -sf `pwd`/src/git/gitconfig ~/.gitconfig
+	@echo "Git prepared"
