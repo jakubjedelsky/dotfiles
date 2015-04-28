@@ -3,7 +3,12 @@
 lock() {
     scrot /tmp/screen_locked.png
     mogrify -scale 10% -scale 1000% /tmp/screen_locked.png
-    i3lock -i /tmp/screen_locked.png -u
+    keyboard=$(xkblayout-state print %s)
+    rm -f /tmp/screen_locked_2.png
+    convert -font courier -fill white -box black -pointsize 15 \
+        -gravity south -draw "text 50,0 ' -$keyboard- '" \
+        /tmp/screen_locked.png /tmp/screen_locked_2.png
+    i3lock -i /tmp/screen_locked_2.png -u
 }
 
 case "$1" in
