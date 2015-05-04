@@ -6,7 +6,7 @@ lock() {
     keyboard=$(xkblayout-state print %s)
     rm -f /tmp/screen_locked_2.png
     convert -font courier -fill white -box black -pointsize 15 \
-        -gravity south -draw "text 50,0 ' -$keyboard- '" \
+        -gravity South -annotate +0+0 " -$keyboard- " \
         /tmp/screen_locked.png /tmp/screen_locked_2.png
     i3lock -i /tmp/screen_locked_2.png -u
 }
