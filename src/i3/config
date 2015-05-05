@@ -232,6 +232,7 @@ exec --no-startup-id setxkbmap -layout cz,us -variant qwerty,
 exec --no-startup-id feh --bg-scale $background
 exec --no-startup-id dropbox start
 exec --no-startup-id xset dpms 600 1200 1800
+exec --no-startup-id ssh-add ~/.ssh/id_rsa{,_gooddata}
 
 # multi-monitor support
 # https://faq.i3wm.org/question/2332/flexible-monitor-setup/
