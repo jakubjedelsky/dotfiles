@@ -19,6 +19,7 @@ floating_modifier $mod
 # Design
 hide_edge_borders both
 for_window [class="(?i)urxvt*"] border 1pixel
+for_window [class="^XCalc$"] floating enable
 
 # Colors (solarized) ###########################################################
 
