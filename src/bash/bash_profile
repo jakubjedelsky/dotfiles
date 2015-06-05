@@ -9,4 +9,9 @@ fi
 PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export PATH
 
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+	eval `ssh-agent -s`
+	ssh-add
+fi
+
 # vim:ts=4:sw=4
