@@ -29,4 +29,6 @@ alias cal='cal -m -3'
 alias notes="vim $HOME/.notes/`date +%F`.md"
 alias _blog="source $HOME/Develop/venvs/blog/bin/activate"
 
+alias wtf="man"
+
 # vim:ts=4:sw=4
