@@ -99,4 +99,4 @@ URxvt*foreground:		#073642
 *color7:	#eee8d5
 *color15:	#fdf6e3
 
-# vim:ts=8:sw=8:noet
+! vim:ts=8:sw=8:noet
