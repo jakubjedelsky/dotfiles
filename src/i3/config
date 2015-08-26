@@ -221,7 +221,7 @@ bar {
 	}
 }
 
-set $background ~/.myconfig/background/Californian_Hills_by_balderoine.jpg
+set $background ~/.myconfig/background/solarized_mountains_by_9beat7-d8rkbit.png
 
 # custom execs
 exec --no-startup-id /usr/bin/syndaemon -d -t -k -i 1
