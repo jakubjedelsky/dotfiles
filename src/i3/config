@@ -24,10 +24,10 @@ for_window [class="^XCalc$"] floating enable
 
 # Colors (solarized) ###########################################################
 
-set $base03	#002b36
-set $base02 #073642
-set $base01 #586e75
-set $base00 #657b83
+set $baseB3	#002b36
+set $baseB2 #073642
+set $baseB1 #586e75
+set $baseB0 #657b83
 set $base0	#839496
 set $base1	#93a1a1
 set $base2	#eee8d5
@@ -43,11 +43,11 @@ set $green	#859900
 
 # Solarized Light
 # Name                  # bord. # backg.# text
-client.focused 			$base02 $base00	$base2
-client.focused_inactive $base02 $base2	$base1
-client.unfocused		$base02 $base2	$base1
-client.urgent			$red	$red  	$base00
-client.background       $base3
+client.focused 			$baseB3 $baseB3	$base2
+client.focused_inactive $baseB3 $baseB3	$baseB1
+client.unfocused		$baseB2 $baseB2	$baseB1
+client.urgent			$red	$red  	$baseB0
+client.background       $baseB2
 
 # End colors ##################################################################
 
@@ -210,14 +210,14 @@ bar {
     status_command py3status -c ~/.i3/i3status.conf -i ~/.i3/py3modules
     output LVDS1
 	colors {
-		background	#002b36
-		statusline	$base3
-		separator	$base0
+		background	$baseB3
+		statusline	$base2
+		separator	$baseB0
 
-		focused_workspace	$base2	$base2	#002b36
+		focused_workspace	$baseB3	$base1	$baseB3
 		#active_workspace
-		inactive_workspace	#073642	#002b36	$base1
-		urgent_workspace	$red	$red	#002b36
+		inactive_workspace	$baseB3	$baseB3	$base2
+		urgent_workspace	$red	$red	$baseB3
 	}
 }
 
