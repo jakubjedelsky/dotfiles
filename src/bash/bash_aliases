@@ -31,4 +31,6 @@ alias _blog="source $HOME/Develop/venvs/blog/bin/activate"
 
 alias wtf="man"
 
+# vim has nicer colors on remote server with xterm
+alias ssh="TERM=xterm ssh"
 # vim:ts=4:sw=4
