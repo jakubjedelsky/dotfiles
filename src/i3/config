@@ -186,6 +186,7 @@ bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 10
 
 # lock it
 bindsym Control+Mod1+l exec --no-startup-id $HOME/.i3/i3exit.sh lock
+bindsym $mod+z exec --no-startup-id $HOME/.i3/i3exit.sh lock
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
