@@ -211,13 +211,13 @@ bar {
     status_command py3status -c ~/.i3/i3status.conf -i ~/.i3/py3modules
     output LVDS1
 	colors {
-		background	$baseB3
+		background	#1d1f21
 		statusline	$base2
-		separator	$baseB0
+		separator	#1d1f21
 
-		focused_workspace	$baseB3	$base1	$baseB3
+		focused_workspace	#1d1f21	$base1	$baseB3
 		#active_workspace
-		inactive_workspace	$baseB3	$baseB3	$base2
+		inactive_workspace	#1d1f21	#1d1f21	$base2
 		urgent_workspace	$red	$red	$baseB3
 	}
 }
