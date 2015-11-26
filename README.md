@@ -15,7 +15,13 @@ Reload (it is useful after changing configuration files):
 
 	make reload-i3
 
+## zsh
+Prepare zsh initialization files. Install with:
+
+	make zsh
+
 ## Bash
+*OBSOLETE*
 Prepare bash personal initialization files. Install with:
 
 	make bash

@@ -1,0 +1,48 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+autoload -U colors && colors # Enable colors in prompt
+
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/kuba/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# PROMPT theme
+setopt prompt_subst
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+PROMPT='[%F{red}%n%f@%F{green}%m%f] %1~ %{$fg[red]%}$(__git_ps1 "(%s)")%{$reset_color%} ➜ '
+
+# fedora development
+BODHI_USER='kubo'
+
+# --- FUNCTIONS ---
+function unlock() {
+	xset -dpms
+	xset s off
+	xautolock -disable
+	notify-send "Screen locker" "Unlocked"
+}
+function lock() {
+	xset +dpms
+	xset s on
+	xautolock -enable
+	notify-send "Screen locker" "Locked"
+}
+# --- SOURCES ---
+#
+# custom aliases
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+
+# GoodData stuff
+[[ -f ~/.myconfig/gooddata.sh ]] && source ~/.myconfig/gooddata.sh
+
+# vim:ts=4:sw=4

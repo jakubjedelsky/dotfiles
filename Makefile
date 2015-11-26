@@ -1,4 +1,4 @@
-install: i3 bash xorg git
+install: i3 bash xorg git zsh
 
 reload-i3:
 	@i3-msg 'reload'
@@ -17,6 +17,10 @@ bash:
 	@ln -sf `pwd`/src/bash/bash_aliases ~/.bash_aliases
 	@ln -sf `pwd`/src/bash/bash_profile ~/.bash_profile
 	@echo "bash prepared"
+
+zsh:
+	@ln -sf `pwd`/src/bash/bash_aliases ~/.bash_aliases
+	@ln -sf `pwd`/src/zsh/zshrc ~/.zshrc
 
 xorg:
 	@ln -sf `pwd`/src/xorg/Xdefaults ~/.Xdefaults
