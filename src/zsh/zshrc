@@ -42,8 +42,6 @@ function lock() {
 for f in ~/.zsh/*.zsh ; do
 	source $f
 done
-# custom aliases
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
 # GoodData stuff
 [[ -f ~/.myconfig/gooddata.sh ]] && source ~/.myconfig/gooddata.sh
