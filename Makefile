@@ -13,14 +13,18 @@ i3:
 	@echo " ! i3 should be reloaded 'make reload-i3'"
 
 bash:
-	@ln -sf `pwd`/src/bash/bashrc ~/.bashrc
-	@ln -sf `pwd`/src/bash/bash_aliases ~/.bash_aliases
-	@ln -sf `pwd`/src/bash/bash_profile ~/.bash_profile
-	@echo "bash prepared"
+	@echo "OBSOLETE"
+	@#ln -sf `pwd`/src/bash/bashrc ~/.bashrc
+	@#ln -sf `pwd`/src/bash/bash_aliases ~/.bash_aliases
+	@#ln -sf `pwd`/src/bash/bash_profile ~/.bash_profile
+	@#echo "bash prepared"
 
 zsh:
-	@ln -sf `pwd`/src/bash/bash_aliases ~/.bash_aliases
+	@mkdir -p ~/.zsh
+	@ln -sf `pwd`/src/zsh/alias.zsh ~/.zsh/alias.zsh
+	@ln -sf `pwd`/src/zsh/git_prompt.zsh ~/.zsh/git_prompt.zsh
 	@ln -sf `pwd`/src/zsh/zshrc ~/.zshrc
+	@echo "zsh prepared"
 
 xorg:
 	@ln -sf `pwd`/src/xorg/Xdefaults ~/.Xdefaults

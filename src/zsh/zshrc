@@ -18,8 +18,8 @@ compinit
 
 # PROMPT theme
 setopt prompt_subst
-source /usr/share/git-core/contrib/completion/git-prompt.sh
-PROMPT='[%F{red}%n%f@%F{green}%m%f] %1~ %{$fg[red]%}$(__git_ps1 "(%s)")%{$reset_color%} ➜ '
+#source /usr/share/git-core/contrib/completion/git-prompt.sh
+PROMPT='[%F{red}%n%f@%F{green}%m%f] %1~%{$reset_color%} %F{$((RANDOM % 32))}●%{$reset_color%} '
 
 # fedora development
 BODHI_USER='kubo'
@@ -38,7 +38,10 @@ function lock() {
 	notify-send "Screen locker" "Locked"
 }
 # --- SOURCES ---
-#
+# zsh internals
+for f in ~/.zsh/*.zsh ; do
+	source $f
+done
 # custom aliases
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
