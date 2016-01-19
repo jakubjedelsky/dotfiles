@@ -2,6 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey "${terminfo[khome]}" beginning-of-line
@@ -14,7 +15,12 @@ zstyle :compinstall filename '/home/kuba/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+zstyle ':completion:*' menu select
 # End of lines added by compinstall
+
+# http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html#index-tty_002c-freezing
+ttyctl -f
 
 # PROMPT theme
 setopt prompt_subst
@@ -45,5 +51,8 @@ done
 
 # GoodData stuff
 [[ -f ~/.myconfig/gooddata.sh ]] && source ~/.myconfig/gooddata.sh
+
+# zsh syntax highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # vim:ts=4:sw=4

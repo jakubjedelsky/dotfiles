@@ -23,6 +23,13 @@ zsh:
 	@mkdir -p ~/.zsh
 	@ln -sf `pwd`/src/zsh/alias.zsh ~/.zsh/alias.zsh
 	@ln -sf `pwd`/src/zsh/git_prompt.zsh ~/.zsh/git_prompt.zsh
+	@if [ -d ~/.zsh/zsh-syntax-highlighting ] ; then \
+		pushd ~/.zsh/zsh-syntax-highlighting >/dev/null; \
+		git pull -q; \
+		popd >/dev/null; \
+	else \
+		git clone -q git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting;  \
+	fi
 	@ln -sf `pwd`/src/zsh/zshrc ~/.zshrc
 	@echo "zsh prepared"
 
