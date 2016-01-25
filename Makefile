@@ -21,6 +21,7 @@ bash:
 
 zsh:
 	@mkdir -p ~/.zsh
+	@ln -sf `pwd`/src/zsh/zprofile ~/.zprofile
 	@ln -sf `pwd`/src/zsh/alias.zsh ~/.zsh/alias.zsh
 	@ln -sf `pwd`/src/zsh/git_prompt.zsh ~/.zsh/git_prompt.zsh
 	@if [ -d ~/.zsh/zsh-syntax-highlighting ] ; then \
