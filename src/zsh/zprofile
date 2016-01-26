@@ -2,5 +2,8 @@
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval `ssh-agent -s`
-    ssh-add
+    # load all keys
+    for KEY in ~/.ssh/*.pub ; do
+			ssh-add $(echo "$KEY" | sed 's/.pub//')
+		done
 fi
