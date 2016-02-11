@@ -1,9 +1,10 @@
-# ~/.zsh_profile
+# ~/.zprofile
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval `ssh-agent -s`
-    # load all keys
-    for KEY in ~/.ssh/*.pub ; do
-			ssh-add $(echo "$KEY" | sed 's/.pub//')
-		done
 fi
+
+# load all keys
+for KEY in ~/.ssh/*.pub ; do
+	ssh-add $(echo "$KEY" | sed 's/.pub//') >/dev/null 2>&1
+done
