@@ -40,6 +40,7 @@ xorg:
 	@ln -sf ~/.Xdefaults ~/.Xresources
 	@ln -sf `pwd`/src/xorg/00-touchpad.conf ~/.myconfig/00-touchpad.conf
 	@ln -sf `pwd`/src/xorg/00-xorg-display.conf ~/.myconfig/00-xorg-display.conf
+	@ln -sf `pwd`/src/xorg/fonts.conf ~/.fonts.conf
 	@echo "Xorg prepared"
 	@echo " ! Files ~/.myconfig/00-* have to be symlinked into /etc/X11/xorg.conf.d/"
 
