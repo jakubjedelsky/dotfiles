@@ -238,7 +238,7 @@ exec --no-startup-id xset dpms 600 1200 1800
 # multi-monitor support
 # https://faq.i3wm.org/question/2332/flexible-monitor-setup/
 bindsym $mod+m exec --no-startup-id xrandr --output HDMI1 --off --output LVDS1 --auto && feh --bg-scale $background
-bindsym $mod+shift+m exec --no-startup-id xrandr --output HDMI1 --auto --above LVDS1 --output LVDS1 --auto && feh --bg-scale $background
+bindsym $mod+shift+m exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 --output LVDS1 --auto && feh --bg-scale $background
 bindsym $mod+Ctrl+m exec --no-startup-id xrandr --output HDMI1 --auto --output LVDS1 --off && feh --bg-scale $background
 
 # vim: ts=4:noet
