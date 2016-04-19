@@ -87,9 +87,8 @@ bindsym $mod+Shift+Right move right
 # move workspaces to another monitor
 bindsym	$mod+Ctrl+Up move workspace to output up
 bindsym	$mod+Ctrl+Down move workspace to output down
-
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right move workspace to output right
+bindsym $mod+Ctrl+Left move workspace to output left
 
 # split in horizontal orientation
 # original $mod+h is used above
