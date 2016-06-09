@@ -4,7 +4,7 @@
 alias s='sudo'
 alias yum='dnf' # d'oh
 alias yi='sudo dnf install'
-alias yu='sudo dnf clean all; sudo dnf upgrade'
+alias yu='sudo dnf --refresh upgrade'
 alias yyu='sudo dnf -y upgrade'
 alias yl='sudo dnf list'
 alias ys='sudo dnf search'
