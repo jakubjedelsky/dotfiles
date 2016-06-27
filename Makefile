@@ -8,7 +8,6 @@ i3:
 	@ln -sf `pwd`/src/i3/config ~/.i3/config
 	@ln -sf `pwd`/src/i3/i3status.conf ~/.i3/i3status.conf
 	@ln -sf `pwd`/src/i3/i3exit.sh ~/.i3/i3exit.sh
-	@ln -snf `pwd`/src/i3/py3modules ~/.i3/py3modules
 	@echo "i3 prepared"
 	@echo " ! i3 should be reloaded 'make reload-i3'"
 
