@@ -84,11 +84,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# move workspaces to another monitor
-bindsym	$mod+Ctrl+Up move workspace to output up
-bindsym	$mod+Ctrl+Down move workspace to output down
-bindsym $mod+Ctrl+Right move workspace to output right
-bindsym $mod+Ctrl+Left move workspace to output left
 
 # split in horizontal orientation
 # original $mod+h is used above
@@ -119,29 +114,55 @@ bindsym $mod+a focus parent
 
 focus_follows_mouse no
 
-# switch to workspace
-bindsym $mod+plus workspace number 1
-bindsym $mod+ecaron workspace number 2
-bindsym $mod+scaron workspace number 3
-bindsym $mod+ccaron workspace number 4
-bindsym $mod+rcaron workspace number 5
-bindsym $mod+zcaron workspace number 6
-bindsym $mod+yacute workspace number 7
-bindsym $mod+aacute workspace number 8
-bindsym $mod+iacute workspace number 9
-bindsym $mod+eacute workspace number 10
+################
+# workspaces
+#
+
+# set names
+set $workspace1  "1: "
+set $workspace2  "2: "
+set $workspace3  number 3
+set $workspace4  number 4
+set $workspace5  number 5
+set $workspace6  number 6
+set $workspace7  number 7
+set $workspace8  "8: "
+set $workspace9  "9: "
+set $workspace10 "10: "
+
+# switch workspaces
+bindsym $mod+plus   workspace $workspace1
+bindsym $mod+ecaron workspace $workspace2
+bindsym $mod+scaron workspace $workspace3
+bindsym $mod+ccaron workspace $workspace4
+bindsym $mod+rcaron workspace $workspace5
+bindsym $mod+zcaron workspace $workspace6
+bindsym $mod+yacute workspace $workspace7
+bindsym $mod+aacute workspace $workspace8
+bindsym $mod+iacute workspace $workspace9
+bindsym $mod+eacute workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+ecaron move container to workspace number 2
-bindsym $mod+Shift+scaron move container to workspace number 3
-bindsym $mod+Shift+ccaron move container to workspace number 4
-bindsym $mod+Shift+rcaron move container to workspace number 5
-bindsym $mod+Shift+zcaron move container to workspace number 6
-bindsym $mod+Shift+yacute move container to workspace number 7
-bindsym $mod+Shift+aacute move container to workspace number 8
-bindsym $mod+Shift+iacute move container to workspace number 9
-bindsym $mod+Shift+eacute move container to workspace number 10
+bindsym $mod+Shift+1      move container to workspace $workspace1
+bindsym $mod+Shift+ecaron move container to workspace $workspace2
+bindsym $mod+Shift+scaron move container to workspace $workspace3
+bindsym $mod+Shift+ccaron move container to workspace $workspace4
+bindsym $mod+Shift+rcaron move container to workspace $workspace5
+bindsym $mod+Shift+zcaron move container to workspace $workspace6
+bindsym $mod+Shift+yacute move container to workspace $workspace7
+bindsym $mod+Shift+aacute move container to workspace $workspace8
+bindsym $mod+Shift+iacute move container to workspace $workspace9
+bindsym $mod+Shift+eacute move container to workspace $workspace10
+
+# move current workspace to another monitor
+bindsym	$mod+Ctrl+Up move workspace to output up
+bindsym	$mod+Ctrl+Down move workspace to output down
+bindsym $mod+Ctrl+Right move workspace to output right
+bindsym $mod+Ctrl+Left move workspace to output left
+
+#
+# workspaces end
+################
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
