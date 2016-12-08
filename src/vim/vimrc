@@ -1,0 +1,170 @@
+" === Vundle configuration ===================================================
+" url: https://github.com/VundleVim/Vundle.vim
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugins
+
+" fugitive: a git wrapper
+Plugin 'tpope/vim-fugitive'
+" nerdtree: a tree explorer for vim
+Plugin 'scrooloose/nerdtree'
+" dbext: vim as a db client
+Plugin 'dbext.vim'
+" lightline: nice bars
+Plugin 'itchyny/lightline.vim'
+" sensitive: basic vim setting
+Plugin 'tpope/vim-sensible'
+" solarized: theme
+Plugin 'altercation/vim-colors-solarized'
+" puppet: syntax/indent/... for puppet
+Plugin 'rodjek/vim-puppet'
+
+" End of plugins
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" ============================================================================
+
+syntax enable
+"let g:solarized_termtrans=1
+set background=dark
+colorscheme solarized
+set wildmenu
+set wildmode=longest:full,full
+" Colorcolumn causes copying of whitespace when using mouse
+" Can be set manually with :set cc=80
+"set colorcolumn=80
+set number
+set t_Co=256
+
+if !has('gui_running')
+  set t_Co=256
+endif
+
+autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType yaml set tabstop=4|set shiftwidth=4|set expandtab
+autocmd BufEnter,BufNew *.yml set tabstop=2|set shiftwidth=4|set expandtab
+autocmd BufEnter,BufNew *.yaml set tabstop=2|set shiftwidth=4|set expandtab
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.json set ft=javascript
+"autocmd BufNewFile,BufRead *.yaml,*.yml so ~/.vim/syntax/yaml.vim
+
+" Plugins configuration
+
+" Open NeredTree w/ F2 key
+map <F2> :NERDTreeToggle<CR>
+
+set tags=./tags;,tags;
+set iskeyword=-,:,@,48-57,_,192-255
+
+" lightline configuration
+let g:Powerline_symbols = 'fancy'
+set laststatus=2
+set showtabline=2 " Always display the tabline, even if there is only one tab
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \           [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \  'readonly': 'MyReadonly',
+  \  'modified': 'MyModified',
+  \  'fugitive': 'MyFugitive',
+  \  'filename': 'MyFilename'
+  \ },
+  \ 'separator': { 'left': "⮀", 'right': '⮂' },
+  \ 'subseparator': { 'left': '⮁', 'right': '⮃' },
+  \ }
+
+function! MyModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! MyReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "⭤"
+  else
+    return ""
+  endif
+endfunction
+
+function! MyFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '⭠ '._ : ''
+  endif
+return ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+" Transparent editing of gpg encrypted files.
+augroup encrypted
+au!
+" First make sure nothing is written to ~/.viminfo while editing
+" an encrypted file.
+autocmd BufReadPre,FileReadPre      *.gpg set viminfo=
+" We don't want a swap file, as it writes unencrypted data to disk
+autocmd BufReadPre,FileReadPre      *.gpg set noswapfile
+" Switch to binary mode to read the encrypted file
+autocmd BufReadPre,FileReadPre      *.gpg set bin
+autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
+autocmd BufReadPre,FileReadPre      *.gpg let shsave=&sh
+autocmd BufReadPre,FileReadPre      *.gpg let &sh='sh'
+autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
+autocmd BufReadPost,FileReadPost    *.gpg '[,']!gpg --decrypt --default-recipient-self 2> /dev/null
+autocmd BufReadPost,FileReadPost    *.gpg let &sh=shsave
+" Switch to normal mode for editing
+autocmd BufReadPost,FileReadPost    *.gpg set nobin
+autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
+autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
+" Convert all text to encrypted text before writing
+autocmd BufWritePre,FileWritePre    *.gpg set bin
+autocmd BufWritePre,FileWritePre    *.gpg let shsave=&sh
+autocmd BufWritePre,FileWritePre    *.gpg let &sh='sh'
+autocmd BufWritePre,FileWritePre    *.gpg '[,']!gpg --encrypt --default-recipient-self 2>/dev/null
+autocmd BufWritePre,FileWritePre    *.gpg let &sh=shsave
+" Undo the encryption so we are back in the normal text, directly
+" after the file has been written.
+autocmd BufWritePost,FileWritePost  *.gpg silent u
+autocmd BufWritePost,FileWritePost  *.gpg set nobin
+augroup END
+
+" vim: tabstop=2:expandtab

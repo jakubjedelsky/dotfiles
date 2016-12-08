@@ -1,4 +1,4 @@
-install: i3 bash xorg git zsh
+install: i3 bash xorg git zsh vim
 
 reload-i3:
 	@i3-msg 'reload'
@@ -46,3 +46,11 @@ xorg:
 git:
 	@ln -sf `pwd`/src/git/gitconfig ~/.gitconfig
 	@echo "Git prepared"
+
+vim:
+	@ln -sf `pwd`/src/vim/vimrc ~/.vimrc
+	@if [ ! -d $(HOME)/.vim ]; then mkdir $(HOME)/.vim ; fi
+	@if [ ! -d $(HOME)/.vim/bundle ]; then mkdir $(HOME)/.vim/bundle; fi
+	@if [ ! -d $(HOME)/.vim/bundle/Vundle.vim ]; then git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim ; fi
+	@vim -E -s -c "source ${HOME}/.vimrc" -c "PluginInstall" -c "qall"
+	@echo "vim prepared"
