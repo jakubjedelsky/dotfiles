@@ -1,4 +1,4 @@
-install: i3 bash xorg git zsh vim
+install: i3 bash xorg git zsh vim dunst
 
 reload-i3:
 	@i3-msg 'reload'
@@ -54,3 +54,7 @@ vim:
 	@if [ ! -d $(HOME)/.vim/bundle/Vundle.vim ]; then git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim ; fi
 	@vim -E -s -c "source ${HOME}/.vimrc" -c "PluginInstall" -c "qall"
 	@echo "vim prepared"
+
+dunst:
+	@if [ ! -d $(HOME)/.config/dunst ]; then mkdir $(HOME)/.config/dunst ; fi
+	@ln -sf `pwd`/src/dunst/dunstrc ~/.config/dunst/dunstrc
