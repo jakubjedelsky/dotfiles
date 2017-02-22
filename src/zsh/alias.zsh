@@ -31,4 +31,7 @@ alias _blog="source $HOME/Develop/venvs/blog/bin/activate"
 
 alias wtf="man"
 
+alias cdpu="cd ~/Develop/gdc/puppet"
+alias cdgd="cd ~/Develop/gdc/"
+
 # vim:ts=4:sw=4
