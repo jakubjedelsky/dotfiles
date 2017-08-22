@@ -246,7 +246,7 @@ set $background ~/.myconfig/background/J-13.jpg
 
 # custom execs
 exec --no-startup-id /usr/bin/syndaemon -d -t -k -i 1
-exec --no-startup-id xautolock -time 10 -locker '~/.i3/i3exit.sh lock' 
+exec --no-startup-id xautolock -time 2 -locker '~/.i3/i3exit.sh lock' 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo '50%'
