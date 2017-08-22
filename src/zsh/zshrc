@@ -25,7 +25,8 @@ ttyctl -f
 # PROMPT theme
 setopt prompt_subst
 #source /usr/share/git-core/contrib/completion/git-prompt.sh
-PROMPT='[%F{red}%n%f@%F{green}%m%f] %1~%{$reset_color%} %F{$((RANDOM % 8))}●%{$reset_color%} '
+#PROMPT='[%F{red}%n%f@%F{green}%m%f] %1~%{$reset_color%} %F{$((RANDOM % 8))}●%{$reset_color%} '
+PROMPT='[%F{red}$(head  /dev/urandom | tr -dc A-Za-z0-9 | head -c 5)%f@%F{green}$(head  /dev/urandom | tr -dc A-Za-z0-9 | head -c 5)%f] %1~%{$reset_color%} %F{$((RANDOM % 8))}●%{$reset_color%} '
 
 # fedora development
 BODHI_USER='kubo'
