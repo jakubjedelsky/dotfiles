@@ -2,12 +2,12 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-Xft.dpi:		96
+!Xft.dpi:		96
 Xft.antialias:		1
 Xft.rgba:		rgb
 Xft.hinting:		true
 Xft.hintstyle:		hintfull
-Xft.lcdfilter: lcddefault
+Xft.lcdfilter:		lcddefault
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
@@ -23,18 +23,17 @@ URxvt.loginShell:	true
 URxvt.saveLines:	1000
 URxvt.internalBorder:	3
 URxvt.lineSpace:	0
-URxvt*borderless: 1
-URxvt*scrollBar: false
-URxvt*loginShell: true
-Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
+URxvt*borderless:	1
+URxvt*scrollBar:	false
+URxvt*loginShell:	true
+Urxvt*secondaryScroll:	true # Enable Shift-PageUp/Down in screen
 
 
 ! Fonts
-URxvt.allow_bold:	true
-URxvt*font:		xft:Hack:style=Regular:pixelsize=12:antialias=true:hinting=true,xft:DejaVu Sans Mono for Powerline:style=Medium:pixels=12:antialias=true
-URxvt*boldFont:		xft:Hack:style=bold:pixelsize=12:antialias=true:hinting=true
-URxvt*italicFont:	xft:Hack:italic:pixelsize=12:antialias=true:hinting=true
-URxvt*boldItalicFont:	xft:Hack:bold:italic:pixelsize=12:antialias=true:hinting=true
+URxvt*font:		xft:Hack:style=Regular:pixelsize=14:antialias=true:hinting=true,xft:DejaVu Sans Mono for Powerline:style=Medium:pixels=12:antialias=true
+URxvt*boldFont:		xft:Hack:style=Bold:pixelsize=14:antialias=true:hinting=true
+URxvt*italicFont:	xft:Hack:style=Italic:pixelsize=14:antialias=true:hinting=true
+URxvt*boldItalicFont:	xft:Hack:style=BoldItalic:pixelsize=14:antialias=true:hinting=true
 ! Fix font space
 URxvt*letterSpace: -1
 
