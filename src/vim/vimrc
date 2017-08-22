@@ -49,6 +49,8 @@ filetype plugin indent on    " required
 syntax enable
 "let g:solarized_termtrans=1
 set background=dark
+"let g:solarized_termcolors=256
+let g:solarized_italic=1
 colorscheme solarized
 set wildmenu
 set wildmode=longest:full,full
@@ -62,7 +64,7 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
+"autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType yaml set tabstop=4|set shiftwidth=4|set expandtab
 autocmd BufEnter,BufNew *.yml set tabstop=2|set shiftwidth=4|set expandtab
