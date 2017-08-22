@@ -34,4 +34,7 @@ alias wtf="man"
 alias cdpu="cd ~/Develop/gdc/puppet"
 alias cdgd="cd ~/Develop/gdc/"
 
+alias ..="cd .."
+alias ...="cd ../.."
+
 # vim:ts=4:sw=4
